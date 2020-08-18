@@ -15,20 +15,20 @@ public class NumberList
 
 	public int size()
 	{
-		return size;
+		return this.size;
 	}
 
 	public boolean isEmpty()
 	{
-		return list.length == 0;
+		return this.size == 0;
 	}
 
 	public String toString()
 	{
 		String str = "[";
-		for (Integer i : list) 
+		for (int i = 0; i < size; i++) 
 		{
-			str += i.toString() + " ";
+			str += this.list[i].toString() + " ";
 		}
 		return str + "]";
 	}
@@ -42,35 +42,64 @@ public class NumberList
 
 	public void add(int index, Integer val)
 	{
-		if (index > size || index < 0) 
+		if (index > this.size || index < 0) 
 		{
 			throw new IndexOutOfBoundsException();
 		}
 
-		if (size == list.length)
+		if (size == this.list.length)
 		{
 			this.doubleCapacity();
 		}
 
+		for (int i = this.size; i > index; i--)
+		{
+			this.list[i] = this.list[i - 1];
+		}
+
+		this.list[index] = val;
+		this.size++;
 	}
 
-	public boolean add(Integer element)
+	public boolean add(Integer val)
 	{
-
+		this.add(this.size, val);
+		return true;
 	}
 
 	public Integer get(int index)
 	{
-
+		if (index >= this.size || index < 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		return this.list[index];
 	}
 
 	public Integer set(int index, Integer val)
 	{
-
+		if (index >= this.size || index < 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		Integer former = this.list[index];
+		this.list[index] = val;
+		return former;
 	}
 
 	public Integer remove(int index)
 	{
-
+		if (index >= this.size || index < 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		Integer former = this.list[index];
+		for (int i = index; i < size - 1; i++)
+		{
+			this.list[i] = this.list[i + 1];
+			this.list[i + 1] = null;
+		}
+		this.size--;
+		return former;
 	}
 }
