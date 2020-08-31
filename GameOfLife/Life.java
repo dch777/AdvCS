@@ -23,7 +23,7 @@ class Life extends JFrame implements ActionListener
 	private static final long serialVersionUID = 1L;
 	private LifeView view;
 	private LifeModel model;
-	private JButton runButton, pauseButton, resumeButton, resetButton;
+	private JButton runButton, pauseButton, resumeButton, resetButton, colorButton;
 	private JTextField fileInput;
 
 	/** construct a randomized starting grid */
@@ -51,11 +51,15 @@ class Life extends JFrame implements ActionListener
 		resumeButton.addActionListener(this);
 		resumeButton.setEnabled(false);
 		controlPanel.add(resumeButton);
+		colorButton = new JButton("Choose Color");
+		colorButton.addActionListener(this);
+		colorButton.setEnabled(true);
+		controlPanel.add(colorButton);
 		resetButton = new JButton("Reset");
 		resetButton.addActionListener(this);
 		resetButton.setEnabled(true);
 		controlPanel.add(resetButton);
-		fileInput = new JTextField(10);
+		fileInput = new JTextField("blinker.lif", 10);
 		fileInput.addActionListener(this);
 		fileInput.setEnabled(true);
 		controlPanel.add(fileInput);
@@ -118,6 +122,10 @@ class Life extends JFrame implements ActionListener
 				pauseButton.setEnabled(false);
 				resumeButton.setEnabled(true);
 			}
+		}
+		else if ( b == colorButton )
+		{
+			view.setColor();
 		}
 	}
 	
