@@ -1,6 +1,3 @@
-//Name: Dhruv Chanana
-//Period: 3B
-
 public class NumberList 
 {
 
