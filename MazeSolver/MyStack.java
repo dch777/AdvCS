@@ -36,12 +36,12 @@ public class MyStack implements StackADT
 		if (isEmpty())
 			throw new EmptyStackException();
 		size--;
-		return stack[size - 1];
+		return stack[size];
 	}
 
 	public void push(Square item)
 	{
-		if (size > stack.length)
+		if (size >= stack.length)
 			doubleCapacity();
 		size++;
 		stack[size - 1] = item;

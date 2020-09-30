@@ -5,7 +5,7 @@ import java.util.*;
 
 public class MazeSolverStack extends MazeSolver 
 {
-	private Stack<Square> stack = new Stack<Square>();
+	private MyStack stack = new MyStack();
 
 	public MazeSolverStack(Maze maze)
 	{
@@ -16,7 +16,7 @@ public class MazeSolverStack extends MazeSolver
 	@Override
 	public void makeEmpty()
 	{
-		stack = new Stack<Square>();
+		stack = new MyStack();
 	}
 
 	@Override
