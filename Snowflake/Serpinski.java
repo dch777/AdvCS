@@ -15,11 +15,12 @@ class SerpinskiPanel extends JPanel
 
 	public void paintComponent(Graphics g)
 	{
-		int width  = getWidth();
+		int width = getWidth();
+		int height = getHeight();
 
 		super.paintComponent(g);
 		g.setColor(Color.BLUE);
-		drawTriangle(g, width, 0, 0);
+		drawTriangle(g, width < height ? width : height, 0, 0);
 	}
 
 	public static void drawTriangle(Graphics g, int side, int x, int y)
